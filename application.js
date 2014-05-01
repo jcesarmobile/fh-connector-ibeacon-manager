@@ -14,6 +14,7 @@ app.use('/mbaas', mbaas.mbaas);
 app.use(mbaas.fhmiddleware());
 
 app.use('/hello', require('./lib/hello.js')());
+app.use('/beacons', require('./lib/beacons.js'));
 
 // You can define custom URL handlers here, like this one:
 app.use('/', function(req, res){
