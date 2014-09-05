@@ -1,5 +1,5 @@
 {
-  "name": "fh-app",
+  "name": "iBeaconManager",
   "version": "0.1.0",
   "dependencies": {
     "express": "4.0.0",

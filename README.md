@@ -1,25 +1,43 @@
-# FeedHenry Hello World MBaaS Server
+FORMAT: 1A
 
-This is a blank 'hello world' FeedHenry MBaaS. Use is as a starting point for building your APIs. 
+# FeedHenry iBeacon Manager
 
-# Group Hello World API
+Management API for iBeacons within the platform.
 
-# hello [/cloud/hello]
+# Group iBeacon Manager API
 
-'Hello world' endpoint.
+# Beacons API [/cloud/beacons]
 
-## hello [POST] 
+iBeacon API
 
-'Hello world' endpoint.
+## Retrieve Entry Point [GET]
+
++ Response 200 (application/json)
+    + Body
+            {
+                1234: {
+                    "major" : 1,
+                    "minor" : 1,
+                    "label": "Some Label Title",
+                    "sublabel": "Some Label Description"
+                }
+            }
+
+## Create iBeacon [POST]
+
+Create an iBeacon to manage within the platform. Fill in a major and minor ID below to setup your iBeacon
 
 + Request (application/json)
     + Body
             {
-              "hello": "world"
+              "major" : 1,
+              "minor" : 1,
+              "label": "Some Label Title",
+              "sublabel": "Some Label Description"
             }
 
 + Response 200 (application/json)
     + Body
             {
-              "msg": "Hello world"
+              "ok": "true"
             }
