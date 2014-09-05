@@ -1,21 +1,23 @@
-var mbaas = require('fh-mbaas-express');
+var mbaasApi = require('fh-mbaas-api');
 var express = require('express');
+var mbaasExpress = mbaasApi.mbaasExpress();
+var express = require('express');
+var beacons = require('./lib/beacons.js');
 
 // Securable endpoints: list the endpoints which you want to make securable here
-var securableEndpoints = ['hello'];
+var securableEndpoints = ['beacons'];
 
 var app = express();
 
 // Note: the order which we add middleware to Express here is important!
-app.use('/sys', mbaas.sys(securableEndpoints));
-app.use('/mbaas', mbaas.mbaas);
+app.use('/sys', mbaasExpress.sys(securableEndpoints));
+app.use('/mbaas', mbaasExpress.mbaas);
 
 // Note: important that this is added just before your own Routes
-app.use(mbaas.fhmiddleware());
+app.use(mbaasExpress.fhmiddleware());
 
-app.use('/hello', require('./lib/hello.js')());
-app.use('/beacons', require('./lib/beacons.js'));
-app.use('/cloud/beacons', require('./lib/beacons.js'));
+app.use('/beacons', require('./lib/beaconRoutes.js')());
+app.use('/cloud/beacons', require('./lib/beaconRoutes.js')());
 
 // You can define custom URL handlers here, like this one:
 app.use('/', function(req, res){
@@ -23,9 +25,13 @@ app.use('/', function(req, res){
 });
 
 // Important that this is last!
-app.use(mbaas.errorHandler());
+app.use(mbaasExpress.errorHandler());
 
 var port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
 var server = app.listen(port, function(){
   console.log("App started at: " + new Date() + " on port: " + port);
+});
+
+beacons.prime(function(err, res){
+  console.log(arguments);
 });
