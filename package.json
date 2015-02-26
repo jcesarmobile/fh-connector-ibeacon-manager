@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "express": "4.0.0",
-    "fh-mbaas-api" : "~4.5.0",
+    "fh-mbaas-api" : "~4.9.0",
     "request": "2.34.0",
     "body-parser": "~1.0.2",
     "cors": "~2.2.0",
@@ -20,5 +20,6 @@
     "grunt-shell": "0.6.4",
     "istanbul": "0.2.7",
     "grunt-env": "~0.4.1"
-  }
+  },
+  "main": "application.js"
 }
