@@ -21,5 +21,8 @@
     "istanbul": "0.2.7",
     "grunt-env": "~0.4.1"
   },
-  "main": "application.js"
+  "main": "application.js",
+  "scripts": {
+    "start": "node application.js"
+  }
 }
