@@ -7,9 +7,7 @@ var beacons = require('./lib/beacons.js');
 
 // list the endpoints which you want to make securable here
 var securableEndpoints;
-// fhlint-begin: securable-endpoints
 securableEndpoints = ['beacons'];
-// fhlint-end
 
 var app = express();
 
@@ -26,20 +24,18 @@ app.use(express.static(__dirname + '/public'));
 // Note: important that this is added just before your own Routes
 app.use(mbaasExpress.fhmiddleware());
 
-// fhlint-begin: custom-routes
 app.use('/beacons', require('./lib/beaconRoutes.js')());
 app.use('/cloud/beacons', require('./lib/beaconRoutes.js')());
-// fhlint-end
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());
 
 var port = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001;
 var host = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-var server = app.listen(port, host, function() {
+app.listen(port, host, function() {
   console.log("App started at: " + new Date() + " on port: " + port); 
 });
 
-beacons.prime(function(err, res){
+beacons.prime(function(){
   console.log(arguments);
 });
