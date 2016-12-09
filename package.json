@@ -30,5 +30,6 @@
   "scripts": {
     "start": "node application.js",
     "test": "grunt unit"
-  }
+  },
+  "license": "Apache-2.0"
 }
