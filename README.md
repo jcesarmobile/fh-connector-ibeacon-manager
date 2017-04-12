@@ -1,6 +1,7 @@
 FORMAT: 1A
 
 # FeedHenry iBeacon Manager
+[![Dependency Status](https://img.shields.io/david/feedhenry-templates/fh-connector-ibeacon-manager.svg?style=flat-square)](https://david-dm.org/feedhenry-templates/fh-connector-ibeacon-manager)
 
 Management API for iBeacons within the platform.
 
